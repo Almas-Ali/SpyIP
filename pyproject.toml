@@ -1,0 +1,55 @@
+[project]
+name = "spyip"
+dynamic = ["version"]
+dependencies = [
+    "pydantic==2.5.3",
+    "httpx==0.26.0"
+]
+requires-python = ">=3.7"
+authors = [{name = "Md. Almas Ali", email = "almaspr3@gmail.com"}]
+maintainers = [{name = "Md. Almas Ali", email = "almaspr3@gmail.com"}]
+description = "A simple IP lookup tool written in Python."
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = [
+    "ip",
+    "lookup",
+    "utility",
+    "simple",
+]
+classifiers = [
+    "Topic :: Internet",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/Almas-Ali/SpyIP"
+Documentation = "https://github.com/Almas-Ali/SpyIP#readme"
+Repository = "https://github.com/Almas-Ali/spyip"
+"Bug Tracker" = "https://github.com/Almas-Ali/SpyIP/issues"
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+[tool.hatch.version]
+path = "spyip/__init__.py"
+
+
+[tool.ruff.format]
+quote-style = "single"
