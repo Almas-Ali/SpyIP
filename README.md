@@ -181,6 +181,26 @@ class DNSResponse(BaseModel):
 
 In batch query, `trace_ip_batch` returns a list of `IPResponse` objects. You can just iterate over the list and use as you need.
 
+## Exceptions
+
+`SpyIP` has 3 custom exceptions:
+
+- `TooManyRequests` - raised when you exceed the API rate limit.
+- `ConnectionTimeout` - raised when connection times out.
+- `StatusError` - raised when API returns an error status.
+
+## Tests
+
+Test cases are located in `tests` directory. You can run tests with the following command:
+
+```bash
+python -m unittest discover -s tests
+```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. If you have any idea, suggestion or question, feel free to open an issue. Please make sure to update tests as appropriate.
+
 ## License
 
 This project is licensed under the terms of the [MIT](LICENSE) license.
