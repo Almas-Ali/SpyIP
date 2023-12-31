@@ -14,24 +14,24 @@ SpyIP uses <a href="https://ip-api.com/" target="_blank" title="IP-API">ip-api</
 
 ## Features
 
-[x] Trace your own IP address
+- [x] Trace your own IP address
 
-[x] Trace your own DNS
+- [x] Trace your own DNS
 
-[x] Trace IP address by query
+- [x] Trace IP address by query
 
-[x] Trace batch IP address
+- [x] Trace batch IP address
 
 
-[x] Type annotated
+- [x] Type annotated
 
-[x] Unit tested
+- [x] Unit tested
 
-[x] PEP8 compliant
+- [x] PEP8 compliant
 
-[x] Documented
+- [x] Documented
 
-[x] Optimized
+- [x] Optimized
 
 
 ## Installation
