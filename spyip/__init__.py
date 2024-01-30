@@ -54,7 +54,7 @@ Supported languages:
 from .backend import trace_me, trace_ip, trace_dns, trace_ip_batch
 
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 __author__ = 'Md. Almas Ali'
 __all__ = [
     'trace_me',
