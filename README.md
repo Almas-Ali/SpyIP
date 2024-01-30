@@ -106,7 +106,8 @@ Response objects are `pydantic` base models. In `SpyIP` we have 2 response objec
 </summary>
 
 ```python
-class IPResponse(BaseModel):
+@define
+class IPResponse:
     """
     Example response from API:
 
@@ -137,29 +138,29 @@ class IPResponse(BaseModel):
     }
     """
 
-    status: str = Field(..., description='Status of the request.')
-    continent: str = Field(..., description='Continent name.')
-    continentCode: str = Field(..., description='Continent code.')
-    country: str = Field(..., description='Country name.')
-    countryCode: str = Field(..., description='Country code.')
-    region: str = Field(..., description='Region code.')
-    regionName: str = Field(..., description='Region name.')
-    city: str = Field(..., description='City name.')
-    district: str = Field(..., description='District name.')
-    zip_: str = Field(..., description='Zip code.')
-    lat: float = Field(..., description='Latitude.')
-    lon: float = Field(..., description='Longitude.')
-    timezone: str = Field(..., description='Timezone.')
-    offset: int = Field(..., description='Offset.')
-    currency: str = Field(..., description='Currency.')
-    isp: str = Field(..., description='ISP name.')
-    org: str = Field(..., description='Organization name.')
-    as_: str = Field(..., description='AS number and name.')
-    asname: str = Field(..., description='AS name.')
-    mobile: bool = Field(..., description='Mobile status.')
-    proxy: bool = Field(..., description='Proxy status.')
-    hosting: bool = Field(..., description='Hosting status.')
-    query: str = Field(..., description='IP address.')
+    status: str = field(metadata={'description': 'Status of the request.'})
+    continent: str = field(metadata={'description': 'Continent name.'})
+    continentCode: str = field(metadata={'description': 'Continent code.'})
+    country: str = field(metadata={'description': 'Country name.'})
+    countryCode: str = field(metadata={'description': 'Country code.'})
+    region: str = field(metadata={'description': 'Region code.'})
+    regionName: str = field(metadata={'description': 'Region name.'})
+    city: str = field(metadata={'description': 'City name.'})
+    district: str = field(metadata={'description': 'District name.'})
+    zip_: str = field(metadata={'description': 'Zip code.'}, alias='zip')
+    lat: float = field(metadata={'description': 'Latitude.'})
+    lon: float = field(metadata={'description': 'Longitude.'})
+    timezone: str = field(metadata={'description': 'Timezone.'})
+    offset: int = field(metadata={'description': 'Offset.'})
+    currency: str = field(metadata={'description': 'Currency.'})
+    isp: str = field(metadata={'description': 'ISP name.'})
+    org: str = field(metadata={'description': 'Organization name.'})
+    as_: str = field(metadata={'description': 'AS number and name.'}, alias='as_')
+    asname: str = field(metadata={'description': 'AS name.'})
+    mobile: bool = field(metadata={'description': 'Mobile status.'})
+    proxy: bool = field(metadata={'description': 'Proxy status.'})
+    hosting: bool = field(metadata={'description': 'Hosting status.'})
+    query: str = field(metadata={'description': 'IP address.'})
 ```
 
 </details>
@@ -171,7 +172,8 @@ class IPResponse(BaseModel):
 </summary>
 
 ```python
-class DNSResponse(BaseModel):
+@define
+class DNSResponse:
     """
     Example response from API:
     "dns": {
@@ -180,8 +182,8 @@ class DNSResponse(BaseModel):
     }
     """
 
-    ip: str = Field(..., description='IP address.')
-    geo: str = Field(..., description='Geo location.')
+    ip: str = field(metadata={'description': 'IP address.'})
+    geo: str = field(metadata={'description': 'Geo location.'})
 ```
 
 </details>
