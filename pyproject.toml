@@ -38,7 +38,7 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/Almas-Ali/SpyIP"
 Documentation = "https://github.com/Almas-Ali/SpyIP#readme"
-Repository = "https://github.com/Almas-Ali/spyip"
+Repository = "https://github.com/Almas-Ali/SpyIP"
 "Bug Tracker" = "https://github.com/Almas-Ali/SpyIP/issues"
 
 
