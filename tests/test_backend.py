@@ -15,18 +15,20 @@ class TestSpyIP(unittest.TestCase):
         self.assertEqual(trace_ip(query='31.13.64.35').status, 'success')
 
     def test_trace_ip_batch(self):
-        '''Check all status is success or not'''
-        res = trace_ip_batch(query_list=[
-            '31.13.64.35',  # facebook.com
-            '142.250.193.206',  # google.com
-            '20.205.243.166',  # github.com
-            '20.236.44.162',  # microsoft.com
-        ])
+        """Check all status is success or not"""
+        res = trace_ip_batch(
+            query_list=[
+                '31.13.64.35',  # facebook.com
+                '142.250.193.206',  # google.com
+                '20.205.243.166',  # github.com
+                '20.236.44.162',  # microsoft.com
+            ]
+        )
         status_list = [i.status == 'success' for i in res]
         self.assertTrue(all(status_list))
 
     def test_ip_response(self):
-        '''
+        """
         {
             "status": "success",
             "continent": "Asia",
@@ -52,7 +54,7 @@ class TestSpyIP(unittest.TestCase):
             "hosting": true,
             "query": "142.250.193.206",
         }
-        '''
+        """
 
         res = trace_ip(query='142.250.193.206')
 
@@ -84,5 +86,5 @@ class TestSpyIP(unittest.TestCase):
         res = trace_ip(query='31.13.64.35')
         self.assertEqual(
             res.json(),
-            '{"status":"success","continent":"Asia","continentCode":"AS","country":"India","countryCode":"IN","region":"WB","regionName":"West Bengal","city":"Kolkata","district":"","zip_":"700059","lat":22.518,"lon":88.3832,"timezone":"Asia/Kolkata","offset":19800,"currency":"INR","isp":"Facebook, Inc.","org":"Meta Platforms Ireland Limited","as_":"AS32934 Facebook, Inc.","asname":"FACEBOOK","mobile":false,"proxy":false,"hosting":false,"query":"31.13.64.35"}'
+            '{"status": "success", "continent": "Asia", "continentCode": "AS", "country": "India", "countryCode": "IN", "region": "WB", "regionName": "West Bengal", "city": "Kolkata", "district": "", "zip_": "700059", "lat": 22.518, "lon": 88.3832, "timezone": "Asia/Kolkata", "offset": 19800, "currency": "INR", "isp": "Facebook, Inc.", "org": "Meta Platforms Ireland Limited", "as_": "AS32934 Facebook, Inc.", "asname": "FACEBOOK", "mobile": false, "proxy": false, "hosting": false, "query": "31.13.64.35"}',
         )
