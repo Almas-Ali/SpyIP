@@ -50,8 +50,11 @@ def trace_me(
             headers=headers,
             timeout=timeout,
         )
+        data = res.json()
+        data['as_'] = data.pop('as')
+
         if res.status_code == 200:
-            return IPResponse(**res.json())
+            return IPResponse(**data)
         else:
             raise StatusError(f'Invalid status code: {res.status_code}. Expected 200.')
 
@@ -80,8 +83,11 @@ def trace_ip(
             headers=headers,
             timeout=timeout,
         )
+        data = res.json()
+        data['as_'] = data.pop('as')
+
         if res.status_code == 200:
-            return IPResponse(**res.json())
+            return IPResponse(**data)
         else:
             raise StatusError(f'Invalid status code: {res.status_code}. Expected 200.')
 
@@ -144,8 +150,12 @@ def trace_ip_batch(
             timeout=timeout,
             json=query_list,
         )
+        response = []
         if res.status_code == 200:
-            return [IPResponse(**x) for x in res.json()]
+            for x in res.json():
+                x['as_'] = x.pop('as')
+                response.append(IPResponse(**x))
+            return response
         else:
             raise StatusError(f'Invalid status code: {res.status_code}. Expected 200.')
     # 408 Request Timeout
