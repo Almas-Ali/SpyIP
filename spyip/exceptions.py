@@ -1,5 +1,5 @@
 """
-All exceptions used in the spyip package
+SpyIP Exceptions.
 """
 
 
