@@ -88,3 +88,7 @@ class TestSpyIP(unittest.TestCase):
             res.json(),
             '{"status": "success", "continent": "Asia", "continentCode": "AS", "country": "India", "countryCode": "IN", "region": "WB", "regionName": "West Bengal", "city": "Kolkata", "district": "", "zip_": "700059", "lat": 22.518, "lon": 88.3832, "timezone": "Asia/Kolkata", "offset": 19800, "currency": "INR", "isp": "Facebook, Inc.", "org": "Meta Platforms Ireland Limited", "as_": "AS32934 Facebook, Inc.", "asname": "FACEBOOK", "mobile": false, "proxy": false, "hosting": false, "query": "31.13.64.35"}',
         )
+
+
+if __name__ == '__main__':
+    unittest.main()

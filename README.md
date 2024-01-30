@@ -1,16 +1,33 @@
 <h1 align="center">SpyIP</h1>
 
+<p align="center">A simple IP lookup tool written in Python with concurrency support.
+</p>
+
 <p align="center">
+<a href="https://github.com/Almas-Ali/SpyIP"><img src="https://img.shields.io/pypi/pyversions/spyip.svg"></a>
+<a href="https://github.com/Almas-Ali/SpyIP"><img src="https://img.shields.io/pypi/v/spyip.svg"></a>
 <a href="https://pepy.tech/project/spyip"><img src="https://static.pepy.tech/personalized-badge/spyip?period=total&units=none&left_color=grey&right_color=blue&left_text=Total%20Downloads"></a>
 <a href="https://github.com/Almas-Ali/SpyIP/"><img src="https://img.shields.io/github/license/Almas-Ali/SpyIP?style=flat-square"></a>
 <a href="https://wakatime.com/badge/user/168edf9f-71dc-49cc-bf77-592d9c9d4eed/project/018cbf9a-cecf-4ae8-ad59-a34b9eefb754"><img src="https://wakatime.com/badge/user/168edf9f-71dc-49cc-bf77-592d9c9d4eed/project/018cbf9a-cecf-4ae8-ad59-a34b9eefb754.svg" alt="wakatime"></a>
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FAlmas-Ali%2FSpyIP&count_bg=%2352B308&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
 </p>
 
-<p align="center">A simple IP lookup tool written in Python.
-</p>
+## Table of Contents
 
-SpyIP uses <a href="https://ip-api.com/" target="_blank" title="IP-API">ip-api</a> API to trace IP addresses. SpyIP is type annotated, unit tested, PEP8 compliant, documented and optimized for performance.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Localizations](#localizations)
+- [Responses](#responses)
+- [Exceptions](#exceptions)
+- [Tests](#tests)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+SpyIP uses <a href="https://ip-api.com/" target="_blank" title="IP-API">ip-api</a> API to trace IP addresses. SpyIP is default synchronous and supports asynchronous operations. It is type annotated, PEP8 compliant, documented and unit tested.
 
 ## Features
 
@@ -22,6 +39,9 @@ SpyIP uses <a href="https://ip-api.com/" target="_blank" title="IP-API">ip-api</
 
 - [x] Trace batch IP address
 
+- [x] Asynchronous supported
+
+- [x] Synchronous by default
 
 - [x] Type annotated
 
@@ -33,7 +53,6 @@ SpyIP uses <a href="https://ip-api.com/" target="_blank" title="IP-API">ip-api</
 
 - [x] Optimized
 
-
 ## Installation
 
 ```bash
@@ -42,8 +61,10 @@ pip install spyip
 
 ## Usage
 
+Default `synchronous` use case for normal and easy to use.
+
 ```python
-from spyip import trace_me, trace_dns, trace_ip, trace_ip_batch
+from spyip import trace_me, trace_dns, trace_ip, trace_ip_batch # default synchronous functions
 
 
 me = trace_me() # trace your own IP
@@ -79,7 +100,52 @@ batch = trace_ip_batch(
 print(batch) # print a list of IPResponse objects. (see below)
 ```
 
-## Localization
+Advance `asynchronous` way to boost performance. Just a simple example to show how to use `asyncio` with `SpyIP`.
+
+```python
+import asyncio
+
+from spyip.backends.asynchronous import trace_me, trace_dns, trace_ip, trace_ip_batch # asynchronous functions
+
+
+async def spy_trace_me():
+    result = await trace_me()
+    print(result)
+
+
+async def spy_trace_dns():
+    result = await trace_dns()
+    print(result)
+
+
+async def spy_trace_ip():
+    result = await trace_ip(query="31.13.64.35")
+    print(result)
+
+
+async def spy_trace_ip_batch():
+    result = await trace_ip_batch(
+        query_list=[
+            '31.13.64.35',  # facebook.com
+            '142.250.193.206',  # google.com
+            '20.205.243.166',  # github.com
+            '20.236.44.162',  # microsoft.com
+        ],
+    )
+    print(result)
+
+
+async def main():
+    '''Load all tasks'''
+    await spy_trace_me()
+    await spy_trace_dns()
+    await spy_trace_ip()
+    await spy_trace_ip_batch()
+
+asyncio.run(main()) # run the main function
+```
+
+## Localizations
 
 Localized `city`, `regionName` and `country` can be translated to the following languages by passing `lang` argument to `trace_me`, `trace_ip` and `trace_ip_batch` functions. Default language is `en` (English). Here is the list of supported languages:
 
@@ -94,9 +160,9 @@ Localized `city`, `regionName` and `country` can be translated to the following 
 | zh-CN          | 中国 (Chinese)                  |
 | ru             | Русский (Russian)               |
 
-## Response objects
+## Responses
 
-Response objects are `pydantic` base models. In `SpyIP` we have 2 response objects respectively:
+Response objects are `attrs` for defining `Response` models. In `SpyIP` we have 2 response objects respectively:
 
 <ol type="1">
 <li>
@@ -190,7 +256,7 @@ class DNSResponse:
 </li>
 </ol>
 
-In batch query, `trace_ip_batch` returns a list of `IPResponse` objects. You can just iterate over the list and use as you need.
+In batch query, `trace_ip_batch` returns a list of `IPResponse` objects (`List[IPResponse]`). You can just iterate over the list and use as you need.
 
 ## Exceptions
 
@@ -202,11 +268,28 @@ In batch query, `trace_ip_batch` returns a list of `IPResponse` objects. You can
 
 ## Tests
 
-Test cases are located in `tests` directory. You can run tests with the following command:
+Test cases are located in `tests` directory. You can run tests with the following commands:
 
 ```bash
+# run all tests in tests directory at once
 python -m unittest discover -s tests
+
+# run asynchronous tests
+python tests/test_asynchronous.py
+
+# run synchronous tests
+python tests/test_synchronous.py
 ```
+
+### Average Time Comparisons:
+
+| Types        | Tests | Time   |
+| ------------ | ----- | ------ |
+| Total tests  | 12    | 6.188s |
+| Asynchronous | 6     | 2.751s |
+| Synchronous  | 6     | 2.968s |
+
+**Note:** This time comparison is based on network performance and hardware capabilities. I am using a very old low-configuration laptop and running on Python 3.11.7. This result may vary depending on your system resources.
 
 ## Contributing
 
