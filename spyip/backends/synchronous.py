@@ -5,12 +5,12 @@ import string
 
 import httpx
 
-from .exceptions import (
+from ..exceptions import (
     TooManyRequests,
     ConnectionTimeout,
     StatusError,
 )
-from .models import (
+from ..models import (
     IPResponse,
     DNSResponse,
 )

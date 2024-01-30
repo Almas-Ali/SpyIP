@@ -1,10 +1,10 @@
 """
-SpyIP - A simple IP lookup tool written in Python.
+SpyIP - A simple IP lookup tool written in Python with concurrency support.
 
 Dependent on:
 -------------
     httpx
-    pydantic
+    attrs
     https://ip-api.com/
     
 
@@ -51,14 +51,16 @@ Supported languages:
 
 """
 
-from .backend import trace_me, trace_ip, trace_dns, trace_ip_batch
+from .backends.synchronous import trace_me, trace_ip, trace_dns, trace_ip_batch
+from .backends import asynchronous, synchronous
 
-
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 __author__ = 'Md. Almas Ali'
 __all__ = [
     'trace_me',
     'trace_ip',
     'trace_dns',
     'trace_ip_batch',
+    'asynchronous',
+    'synchronous',
 ]

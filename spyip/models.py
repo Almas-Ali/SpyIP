@@ -1,3 +1,6 @@
+"""
+SpyIP response models.
+"""
 from attr import define, field, asdict
 import json
 
