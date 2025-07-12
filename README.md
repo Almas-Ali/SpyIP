@@ -9,7 +9,7 @@
 <a href="https://pepy.tech/project/spyip"><img src="https://static.pepy.tech/personalized-badge/spyip?period=total&units=none&left_color=grey&right_color=blue&left_text=Total%20Downloads"></a>
 <a href="https://github.com/Almas-Ali/SpyIP/"><img src="https://img.shields.io/github/license/Almas-Ali/SpyIP?style=flat-square"></a>
 <a href="https://wakatime.com/badge/user/168edf9f-71dc-49cc-bf77-592d9c9d4eed/project/018cbf9a-cecf-4ae8-ad59-a34b9eefb754"><img src="https://wakatime.com/badge/user/168edf9f-71dc-49cc-bf77-592d9c9d4eed/project/018cbf9a-cecf-4ae8-ad59-a34b9eefb754.svg" alt="wakatime"></a>
-<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FAlmas-Ali%2FSpyIP&count_bg=%2352B308&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+<a href="https://github.com/Almas-Ali/SpyIP"><img alt="Hits" src="https://hits.sh/github.com/Almas-Ali/SpyIP.svg?extraCount=1456"/></a>
 </p>
 
 ## Table of Contents
